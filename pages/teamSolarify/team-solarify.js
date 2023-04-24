@@ -2,16 +2,18 @@ import React from "react";
 import TeamMember from "./team-member";
 import styled, { keyframes } from "styled-components";
 
-class TeamSolarify extends React.Component {
-    render() {
-        const move = keyframes`
-            0% {
-                transform: translateX(-50%) translateY(-50%) rotate(0deg);
-            }
-            100% {
-                transform: translateX(-50%) translateY(-50%) rotate(360deg);
-            }
-        `;
+class TeamSolarify extends React.Component {    
+    buildCircle(initialRotation) {
+        function move(initialRotation) {
+            return keyframes`
+                0% {
+                    transform: translateX(-50%) translateY(-50%) rotate(${initialRotation}deg);
+                }
+                100% {
+                    transform: translateX(-50%) translateY(-50%) rotate(${initialRotation + 360}deg);
+                }
+            `;
+        }
 
         const Circle = styled.div`
             position: absolute;
@@ -19,17 +21,32 @@ class TeamSolarify extends React.Component {
             left: 50%;
             width: 100px;
             height: 100px;
-            margin-top: -50px;
-            margin-left: -50px;
-            background-color: red;
             border-radius: 50%;
-            animation: ${move} 4s linear infinite;
+            animation: ${move(initialRotation)} 4s linear infinite;
         `;
 
         return (
             <Circle>
-                <TeamMember/>
+                <TeamMember color="black" initialRotation={initialRotation}/>
             </Circle>
+        )
+    }
+
+    render() {
+        let teamMembers = [
+            'https://picsum.photos/20/300',
+            'https://picsum.photos/200/300',
+            'https://picsum.photos/200/300',
+            'https://picsum.photos/200/300',
+            'https://picsum.photos/200/300',
+        ]
+
+        return (
+            <div>
+                {teamMembers.map((member, index) => (
+                    this.buildCircle(index * 360 / teamMembers.length)
+                ))}
+            </div>
         );
     }
 }

@@ -2,21 +2,23 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 
 class TeamMember extends React.Component {
-    render() {
-        const spin = keyframes`
-            0% {
-                transform: rotate(360deg);
-            }
-            100% {
-                transform: rotate(0deg);
-            }
-        `;
+    buildMember(initialRotation) {
+        function spin(initialRotation) {
+            return keyframes`
+                0% {
+                    transform: rotate(${360 - initialRotation}deg);
+                }
+                100% {
+                    transform: rotate(${initialRotation * -1}deg);
+                }
+            `;
+        }
 
         const Member = styled.div`
             width: 50px;
             height: 50px;
-            background-color: blue;
-            animation: ${spin} 4s linear infinite;
+            background-color: ${this.props.color};
+            animation: ${spin(initialRotation)} 4s linear infinite;
             transform-origin: center;
             position: absolute;
             top: 50%;
@@ -24,7 +26,17 @@ class TeamMember extends React.Component {
         `;
 
         return (
-            <Member />
+            <Member>
+                <div color="black">
+                    {initialRotation}
+                </div>
+            </Member>
+        )
+    }
+
+    render() {
+        return (
+            this.buildMember(this.props.initialRotation)
         );
     }
 }
