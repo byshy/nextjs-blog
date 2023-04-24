@@ -2,8 +2,8 @@ import React from "react";
 import TeamMember from "./team-member";
 import styled, { keyframes } from "styled-components";
 
-class TeamSolarify extends React.Component {    
-    buildCircle(initialRotation) {
+class TeamSolarify extends React.Component {
+    buildCircle(initialRotation, member) {
         function move(initialRotation) {
             return keyframes`
                 0% {
@@ -28,24 +28,38 @@ class TeamSolarify extends React.Component {
 
         return (
             <Circle>
-                <TeamMember color="black" initialRotation={initialRotation}/>
+                <TeamMember color="black" initialRotation={initialRotation} member={member} />
             </Circle>
         )
     }
 
     render() {
         let teamMembers = [
-            'https://picsum.photos/20/300',
-            'https://picsum.photos/200/300',
-            'https://picsum.photos/200/300',
-            'https://picsum.photos/200/300',
-            'https://picsum.photos/200/300',
+            {
+                "image": "https://picsum.photos/20/300",
+                "name": "Basel"
+            },
+            {
+                "image": "https://picsum.photos/20/30",
+                "name": "Norhan"
+            },
+            {
+                "image": "https://picsum.photos/200/30",
+                "name": "Mohammed"
+            },
+            {
+                "image": "https://picsum.photos/200/300",
+                "name": "Hadeel"
+            },
         ]
 
         return (
             <div>
                 {teamMembers.map((member, index) => (
-                    this.buildCircle(index * 360 / teamMembers.length)
+                    this.buildCircle(
+                        index * 360 / teamMembers.length,
+                        member,
+                    )
                 ))}
             </div>
         );
