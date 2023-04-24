@@ -17,14 +17,17 @@ class TeamMember extends React.Component {
             `;
         }
 
+        let size = 100
+
         const Member = styled.div`
-            width: 50px;
-            height: 50px;
+            width: ${size}px;
+            height: ${size}px;
             background-color: ${this.props.color};
             animation: ${spin} 4s linear infinite;
             transform-origin: center;
             border-radius: 50%;
             position: absolute;
+            overflow: hidden;
         `;
 
         let member = this.props.member
@@ -34,9 +37,8 @@ class TeamMember extends React.Component {
                 <div color="black">
                     <Image
                         src={member.image}
-                        height={144}
-                        width={144}
                         alt={member.name}
+                        layout="fill" objectFit="cover"
                     />
                 </div>
             </Member>
