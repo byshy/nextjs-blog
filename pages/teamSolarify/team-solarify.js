@@ -15,13 +15,14 @@ class TeamSolarify extends React.Component {
             `;
         }
 
+        const size = 300
+
         const Circle = styled.div`
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
+            width: ${size}px;
+            height: ${size}px;
             animation: ${move(initialRotation)} 4s linear infinite;
         `;
 

@@ -21,8 +21,6 @@ class TeamMember extends React.Component {
             animation: ${spin(initialRotation)} 4s linear infinite;
             transform-origin: center;
             position: absolute;
-            top: 50%;
-            left: 50%;
         `;
 
         return (
