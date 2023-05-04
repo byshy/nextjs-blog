@@ -25,18 +25,10 @@ export default function Home() {
     <TeamSolarify
       memberSize={memberSize}
       circleSize={circleSize}
-      teamMembers={teamMembers}
     >
-      <div
-        style={{
-          backgroundColor: "pink",
-          borderRadius: "10px",
-          position: "absolute",
-          padding: "50px",
-        }}
-      >
-        Hello
-      </div>
+        {teamMembers.map((member, index) =>
+          member.name
+        )}
     </TeamSolarify>
   );
 }

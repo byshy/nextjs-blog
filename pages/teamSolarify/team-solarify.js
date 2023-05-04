@@ -39,7 +39,7 @@ class TeamSolarify extends React.Component {
             member={member}
             memberSize={memberSize}
           >
-            {this.props.children}
+            {member}
           </TeamMember>
         </Circle>
       </>
@@ -47,12 +47,12 @@ class TeamSolarify extends React.Component {
   }
 
   render() {
-    const teamMembers = this.props.teamMembers;
+    const children = this.props.children;
 
     return (
       <div>
-        {teamMembers.map((member, index) =>
-          this.buildCircle((index * 360) / teamMembers.length, member)
+        {children.map((child, index) =>
+          this.buildCircle((index * 360) / children.length, child)
         )}
       </div>
     );
