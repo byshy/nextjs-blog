@@ -35,13 +35,13 @@ class TeamSolarify extends React.Component {
       <>
         <Circle>
           <TeamMember
-            color="black"
             initialRotation={initialRotation}
             member={member}
             memberSize={memberSize}
-          />
+          >
+            {this.props.children}
+          </TeamMember>
         </Circle>
-        {this.props.children}
       </>
     );
   }

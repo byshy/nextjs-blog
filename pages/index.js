@@ -32,8 +32,6 @@ export default function Home() {
           backgroundColor: "pink",
           borderRadius: "10px",
           position: "absolute",
-          top: "50%",
-          left: "50%",
           padding: "50px",
         }}
       >

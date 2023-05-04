@@ -23,26 +23,16 @@ class TeamMember extends React.Component {
     const Member = styled.div`
       width: ${memberSize}px;
       height: ${memberSize}px;
-      background-color: ${this.props.color};
       animation: ${spin} 4s linear infinite;
       transform-origin: center;
-      border-radius: 50%;
       position: absolute;
-      overflow: hidden;
     `;
 
     const member = this.props.member;
 
     return (
       <>
-        <Member>
-          <Image
-            src={member.image}
-            alt={member.name}
-            width={memberSize}
-            height={memberSize}
-          />
-        </Member>
+        <Member>{this.props.children}</Member>
       </>
     );
   }
